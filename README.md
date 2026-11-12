@@ -11,9 +11,9 @@ Python 脚本转可执行文件图形前端（Tkinter + subprocess 调用 PyInst
 - 状态栏 + 成功/失败弹窗，输出 exe 路径
 
 ## Requirements
-- Python 3.8+（PyInstaller 6.x 支持 3.8+；打什么版本目标建议在对应系统本机打）[3](@ref)
+- Python 3.8+（PyInstaller 6.x 支持 3.8+；打什么版本目标建议在对应系统本机打）
 - Tkinter（标准库；Linux 补 python3-tk）
-- PyInstaller（工具可自动装；或手动 pip install pyinstaller）[3](@ref)
+- PyInstaller（工具可自动装；或手动 pip install pyinstaller）
 
 ## Install
 git clone https://github.com/berserkross/py-To-exe.git
@@ -31,14 +31,14 @@ python py-To-exe.py
 5. 开始打包；完成后到输出目录取 <脚本名>.exe
 等效命令行（工具后台生成类似命令）：
    python -m PyInstaller --onefile --noconsole --icon=app.ico --distpath OUT script.py
-窗口程序也可 --windowed；多文件/资源用 --add-data；隐式缺失模块用 --hidden-import。[6,11,15](@ref)
+窗口程序也可 --windowed；多文件/资源用 --add-data；隐式缺失模块用 --hidden-import。
 
 ## Platform notes
-- PyInstaller 不是交叉编译器：在 Windows 打 Windows exe，在 macOS 打 macOS 应用，在 Linux 打 Linux 可执行文件；不能一台机器出三平台。[3](@ref)
-- Windows：单文件启动会解压到临时目录，稍慢；杀软可能误报单文件，重要分发用代码签名或改 --onedir。[8,11](@ref)
+- PyInstaller 不是交叉编译器：在 Windows 打 Windows exe，在 macOS 打 macOS 应用，在 Linux 打 Linux 可执行文件；不能一台机器出三平台。
+- Windows：单文件启动会解压到临时目录，稍慢；杀软可能误报单文件，重要分发用代码签名或改 --onedir。
 - macOS：GUI 用 --windowed --noconsole；若分发给别人通常还要签名/授权，单纯自己用可先不打签。
 - Linux：可打无控制台 ELF，但本工具 UI 默认按 Windows 路径/桌面输出写，Linux 自行改输出目录。
-- 第三方依赖：如果脚本用 numpy/Pillow/pyautogui 等，确保在打包环境已 pip 安装；PyInstaller 大多自动收集，少数需 --hidden-import 或 --add-data。[14,15](@ref)
+- 第三方依赖：如果脚本用 numpy/Pillow/pyautogui 等，确保在打包环境已 pip 安装；PyInstaller 大多自动收集，少数需 --hidden-import 或 --add-data。
 
 ## Use cases
 把自己写的 Tkinter 小工具、数据处理脚本、实验室内部工具打包给不装 Python 的同学运行。
